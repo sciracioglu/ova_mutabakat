@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\VWADTY;
 use App\VWASRK;
 use App\ARGBYNBS;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
 class BaBsController extends Controller
@@ -18,6 +19,7 @@ class BaBsController extends Controller
                         ->where('GONDERILDI', 0)
                         ->get();
         Log::info('BABS kayit sayi : ' . $data->count());
+        Log::info('saat ' . Carbon::now()->format('d/m/Y H:i:s'));
 
         if ($data->count() > 0) {
             foreach ($data as $firma) {
