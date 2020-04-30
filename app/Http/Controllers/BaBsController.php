@@ -18,7 +18,6 @@ class BaBsController extends Controller
         $data = VWABBS::where('ISLEM', 0)
                         ->where('GONDERILDI', 0)
                         ->get();
-        Log::info('BABS kayit sayi : ' . $data->count());
         Log::info('saat ' . Carbon::now()->format('d/m/Y H:i:s'));
 
         if ($data->count() > 0) {
@@ -27,7 +26,6 @@ class BaBsController extends Controller
                     Mail::to($firma->EMAIL5)
                         ->send(new BaBsMail($firma));
                 }
-                Log::info('firma maili gonderildi. Guid : ' . $firma->GUID);
                 ARGBYNBS::where('GUID', $firma->GUID)
                         ->update([
                             'GONDERILDI' => 1
