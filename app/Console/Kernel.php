@@ -4,7 +4,6 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\App;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,11 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        if (App::environment('production')) {
-            $schedule->call('App\Http\Controllers\BaBsController@index')->everyMinute();
-            $schedule->call('App\Http\Controllers\BakiyeController@index')->everyMinute();
-            $schedule->call('App\Http\Controllers\BordroController@index')->everyMinute();
-        }
+        $schedule->call('App\Http\Controllers\BaBsController@index')->everyMinute();
+        $schedule->call('App\Http\Controllers\BakiyeController@index')->everyMinute();
+        $schedule->call('App\Http\Controllers\BordroController@index')->everyMinute();
     }
 
     /**
