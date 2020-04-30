@@ -7,21 +7,23 @@ use App\ARGBRDMAIL;
 use App\Mail\BordroMail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BordroController extends Controller
 {
     public function index()
     {
+        Log::info('bordro : ' . Carbon::now()->format('d/m/Y H:i:s'));
         $mailler = DB::connection('personel')->select('SELECT * FROM dbo.ARGBRDMAIL WHERE GONDER = 0');
 
-                    foreach($mailler as $bordro){
-                        if ($bordro->EPOSTA && (filter_var($bordro->EPOSTA, FILTER_VALIDATE_EMAIL))) {
-                            $uid = (string)$bordro->UID;
-                            Mail::to($bordro->EPOSTA)
+        foreach ($mailler as $bordro) {
+            if ($bordro->EPOSTA && (filter_var($bordro->EPOSTA, FILTER_VALIDATE_EMAIL))) {
+                $uid = (string)$bordro->UID;
+                Mail::to($bordro->EPOSTA)
                                     ->send(new BordroMail($bordro, $uid));
-                            ARGBRDMAIL::where('UID', $uid)->update(['GONDER' => 1]);
-                        }
-                    };
+                ARGBRDMAIL::where('UID', $uid)->update(['GONDER' => 1]);
+            }
+        };
     }
 
     public function show(string $uid)

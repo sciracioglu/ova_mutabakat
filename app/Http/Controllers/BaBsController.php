@@ -18,7 +18,7 @@ class BaBsController extends Controller
         $data = VWABBS::where('ISLEM', 0)
                         ->where('GONDERILDI', 0)
                         ->get();
-        Log::info('saat ' . Carbon::now()->format('d/m/Y H:i:s'));
+        Log::info('babs : ' . Carbon::now()->format('d/m/Y H:i:s'));
 
         if ($data->count() > 0) {
             foreach ($data as $firma) {
