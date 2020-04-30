@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
 class BaBsMail extends Mailable
 {
@@ -31,7 +30,6 @@ class BaBsMail extends Mailable
      */
     public function build()
     {
-        Log::info('BABS mail metoduna geldi');
         $baslik = ' BS Mütabakat';
         if ($this->data->SABLONTIP == 9) {
             $baslik = ' BA Mütabakat';
@@ -41,8 +39,6 @@ class BaBsMail extends Mailable
 
         $this->tarih = $this->data->YIL . ' / ' . $aylar[$this->data->AY];
         if ($this->data->EMAIL5 && (filter_var($this->data->EMAIL5, FILTER_VALIDATE_EMAIL))) {
-            Log::info('BABS mail gonderiliyor..');
-
             return $this->to($this->data->EMAIL5)
                     ->subject($this->data->SIRKETAD . $baslik)
                     ->view('mail.babs.bilgi');

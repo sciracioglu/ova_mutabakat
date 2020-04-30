@@ -21,13 +21,11 @@ class BaBsController extends Controller
 
         if ($data->count() > 0) {
             foreach ($data as $firma) {
-                Log::info('firma eposta : ' . $firma->EMAIL5);
                 if ($firma->EMAIL5 && (filter_var($firma->EMAIL5, FILTER_VALIDATE_EMAIL))) {
                     Mail::to($firma->EMAIL5)
                         ->send(new BaBsMail($firma));
                 }
                 Log::info('firma maili gonderildi. Guid : ' . $firma->GUID);
-
                 ARGBYNBS::where('GUID', $firma->GUID)
                         ->update([
                             'GONDERILDI' => 1
