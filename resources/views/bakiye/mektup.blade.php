@@ -4,7 +4,7 @@
 		font-family: DejaVu Sans;
 		font-size: 13px;
 	}
-    
+
     .page-break {
     page-break-after: always;
     }
@@ -18,28 +18,28 @@
         padding-top: 12px;
         padding-bottom: 12px;
         text-center: left;
-        
+
     }
     hr{
         margin:2px 0;
         border:1px solid black;
     }
-    
+
 </style>
 
-<img src="http://95.9.95.54:84/img/{{$data->SIRKETNO }}.png" style="height:54px"  />
+<img src=http://176.235.81.42:84/img/{{$data->SIRKETNO }}.png" style="height:54px"  />
 
 <div>
     <div>
         <hr>
         <p>Sayın, {{ $data->KARTKOD}} <br> {{ $data->UNVAN }}</p>
-        
+
         <h6><u>Özü : Hesap Bakiyeniz hakkında</u></h6>
 
     </div>
     <div style="margin-top:50px">
         <p>
-        Şirketimizdeki cari hesabınız <b>{{ $data->RAPORTARIH }}</b> tarihi itibariyle 
+        Şirketimizdeki cari hesabınız <b>{{ $data->RAPORTARIH }}</b> tarihi itibariyle
         <b>{{ number_format($data->BAKIYE,2,',','.') }} TL</b>
         </p>
         <p>
@@ -54,7 +54,7 @@
     </div>
     <div>
         <h6><u>HESAP MUTABAKATI HAKKINDA</u></h6>
-        
+
         <p>
             Nezdinizdeki hesap durumunuzun .............. tarihindeki ................. TL bakiye ile mutabık olduğumuzu
             / mutabık olmadığımızı teyid ederiz.
@@ -75,13 +75,13 @@
             <p><b>Not:</b>
                 <ol>
                     <li>
-                        Mutabakat veya itirazınızı bir ay içinde bildirmediğiniz takdirde T.T.K. nun 92. 
+                        Mutabakat veya itirazınızı bir ay içinde bildirmediğiniz takdirde T.T.K. nun 92.
                         Maddesi gereğince bakiyede mutabık sayılacağınızı hatırlatırız.
                     </li>
                     <li>
                         Bakiyede mutabık olmadığınız takdirde, bir hesap ekstrenizi gönderilmesini rica ederiz.
                     </li>
-                
+
                 </ol>
             </p>
         <h6><u>MUTABAKAT İÇİN</u></h6>
@@ -106,5 +106,5 @@
         </p>
     </div>
 
-    
+
 </div>
